@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Project</title>
+        <style>
+            /* CSS styles for the slider container */
+            .slider {
+                width: 80%;
+                height: 300px;
+                overflow: hidden;
+                position: relative;
+                border-radius: 5px;
+            }
+            
+            /* CSS styles for the slider images */
+            .slider img {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                object-fit: cover;
+                transition: transform 1s;
+            }
+            /* CSS styles for the active image */
+            .slider img.active {
+                transform: translateX(0);
+            }
+            /* CSS styles for the inactive images */
+            .slider img:not(.active) {
+                transform: translateX(-100%);
+            }
+            
+            .form {   
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                display: flex;
+                flex-direction: column;
+                left:10px;
+                right:10px;
+                width:60%
+            }
+            #status{
+                margin-left: 20px;
+                /* color: red; */
+            }
+            textarea{
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                font-size: 16px;
+                resize: none;
+            }
+            
+            .btn {
+                border: none;
+                border-radius: 5px;
+                padding: 10px;
+                margin: 10px;
+                font-size: 16px;
+                cursor: pointer;
+                width:10%;
+                color: white;
+                background-color: green;
+               
+            }
+            .btn:hover {
+                background-color: #040d62;
+            }
+            .box{
+                width: 90%;
+                height:200px;
+                border: none;
+                border-radius: 10px;
+                margin: 20px auto;
+                overflow: hidden;
+                background-color: #74EBD5;
+                background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+            }
+            .box:hover{
+                background-color: #9FACE6;
+                background-image: linear-gradient(90deg, #9FACE6 0%, #74EBD5 100%);
+                transform: scale(1.05);
+                transition: 0.5s;
+                
+            }
+            #section3{
+                background-color: #ecf5f3;
+                padding-bottom: 20px;
+            }
+            
+            /* this css is for news */
+            #section4{
+                margin-top: 20px;
+                margin-bottom: 20px;
+                background-color: #e8e8e8;
+                padding: 20px;
+
+            }
+            img{
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
+                border-radius: 5px;               
+                
+            }
+            img:hover{
+                transform: scale(1.01);
+                transition: 0.5s;
+            }
+            hr{
+                border: 1px solid black;
+                width: 12%;
+                margin-left: 0;
+            }
+            h1,h3,h2{
+                text-align: center;
+            }
+                
+            @media screen and (min-width:780px ){
+                .newsContent{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-gap: 30px;
+                }
+                body{
+                    margin:40px;
+                }
+                
+            }
+            
+            
+            @media screen and (min-width:0px ) and (max-width: 780px) {
+                .grid{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    width: 100%;
+                }
+                .btn{
+                    width: 50%;
+                }
+                .form{
+                    width: 100%;
+                }
+                img{
+                    width: 90%;
+                }
+                #nav-link{
+                    display: none;
+                }
+                .menu-icon{
+                    display: block;
+                }
+                .slider{
+                    width: 100%;
+                }
+                
+                
+                
+                
+            }
+            @media screen and (min-width:780px ) and (max-width: 1024px) {
+                .grid{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    width: 100%;
+                }
+                .btn{
+                    width: 50%;
+                }
+                .form{
+                    width: 60%;
+                }
+                img{
+                    width: 50%;
+                }
+                .menu-icon{
+                    display: none;
+                }
+                .slider{
+                    width: 100%;
+                }
+                
+                
+            }
+            @media screen and (min-width:1024px){
+                .grid{
+                    width: 60%;
+                    margin:10px auto;
+                }
+                img{
+                    width: 50%;
+                }
+                .menu-icon{
+                    display: none;
+                }
+                
+                
+            }
+        </style>
+    </head>
+    <body>
+        <section id="section1">
+            <center>
+            <div class="slider">
+                <img src="https://images.hdqwalls.com/download/rose-bud-petals-2560x1080.jpg" class="active">
+                <img src="https://images.hdqwalls.com/wallpapers/bthumb/counter-strike-digital-art-wallpaper.jpg">
+                <img src="https://images.hdqwalls.com/wallpapers/bthumb/abstract-shapes-4k-q2.jpg">
+            </div>
+            </center>
+        </section>
+        
+        <!-- this is the arabic lanuage accept section -->
+        <section id="section2">
+            <h2>ACCEPT ARABIC LANGUAGE</h2>
+            <center>
+            <form method="POST" class="form">
+                <textarea class="arabic-only" id="arabic-only" type="text" placeholder="Enter the Arabic Language here..." onchange="arabiconly()" required></textarea>
+                <span id="status"></span>
+                <button  class="btn" id="myBtn">Check</button>
+            </form>
+            </center>
+        </section>
+        <!-- this is the grid section -->
+        <section id="section3">
+            <h2>GRID LAYOUT</h2>
+        <div class="grid">
+            <div class="box row1">
+                <div class="card">                    
+                </div>
+            </div>
+            <div class="box row2">
+                <div class="card">                    
+                </div>
+            </div>
+            <div class="box row3">
+                <div class="card">                    
+                </div>
+            </div>            
+            <div class="box row4">
+                <div class="card">                    
+                </div>
+            </div>            
+            <div class="box row5">
+                <div class="card">                    
+                </div>
+            </div>
+            <div class="box row6">
+                <div class="card">                    
+                </div>
+            </div>    
+        </div>            
+        </section>
+    <!-- this section is about newspaper using grid -->
+        <section id="section4">
+            <div class="newsTitle">
+                <h1>Missing Tara Air plane with 22 aboard found crashed in Nepal</h1>        
+                <h3>Wreckage of the Twin Otter that flew for Jomsom from Pokhara on Sunday morning was located near a mountain in Mustang on Monday morning.</h3>
+            </div>
+            <div class="newsTitlePhoto">
+                <img class="newsTitleImage" src="https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2023/third-party/thumb5-1673853591.jpg&w=900&height=601"/>
+            </div> 
+            <div class="newsContent">
+                <div class="column1">
+                    <br/>
+                    <span>
+                        SUDIP SHRESTHA
+                        <hr>
+                        KATHMANDU, MAY 30 
+                    </span>
+                    <p>               
+                        A Tara Air plane which had gone 
+                        missing since Sunday morning was 
+                        found crashed on a mountain on 
+                        Monday morning. Bodies of 21 of the 
+                        22 people aboard the plane were recovered as of Monday night. One person 
+                        is still unaccounted for, officials said. 
+                        This is the seventh crash in the 
+                        Pokhara-Jomsom route in the last 
+                        three decades.
+                        The wreckage of the plane was 
+                        found at Sano Sware Bhir in Thasang 
+                        of Mustang, according to the Civil 
+                        Aviation Authority of Nepal, the 
+                        country’s aviation regulator
+                    </p>
+                    <p>
+                        ountry’s aviation regulator. 
+                        Sixteen Nepalis, including three 
+                        crew, four Indian and two German 
+                        nationals were in the plane.
+                        The registration mark 9N-AET 
+                        Canadian-made DHC-6-300 Twin Otter 
+                        plane had taken off from Pokhara to 
+                        Jomsom at 9:55am. It lost contact with 
+                        the air traffic controller at 10:07am in 
+                        the Ghodepani area, according to a 
+                        statement issued by the Civil Aviation 
+                        Authority of Nepal. 
+                        The exact cause of the crash is 
+                        unknown, officials said. 
+                        But the preliminary report shows 
+                        weather factors behind the ill-fated 
+                        crash.
+                        “The plane was flying at 12,300ft and 
+                        later slammed into a mountain at 
+                        14,500ft. This shows the plane made a 
+                        fast climb to clear the terrain,” said an 
+                        aviation expert, who wished not to be 
+                        named because the government has 
+                        formed a commission to probe the 
+                        matter. 
+                        The nature of the crash and the 
+                        position of the crashed aircraft shows 
+                        the pilot wanted to avoid the cloud and 
+                        during the course, the plane made a 
+                        steep turn with an excessive bank
+                    </p>
+        
+                </div>
+                <div class="column2">
+                    <p>
+                        A steep turn in aviation, performed 
+                        by an aircraft, is a turn that involves a 
+                        bank of more than 30 degrees. 
+                        “As per my observation, the flight 
+                        captain may have seen clouds on his 
+                        right. He then took a left turn, on the 
+                        same side where he was seated, to avoid 
+                        the clouds,” said a retired Twin Otter 
+                        captain who has flown in the PokharaJomsom route hundreds of times. 
+                        Aircrafts usually take a turn, left or 
+                        right, for several reasons; one is to 
+                        avoid obstacles like mountains or 
+                        clouds.
+                        “As soon as the aircraft made a 
+                        banking turn to change the direction, 
+                        in which the plane inclines, usually 
+                        towards the ground or an obstacle 
+                        which may be the hills, in this case, 
+                        ground proximity warning system 
+                        (GPWS) alarm may have rung,” the 
+                        captain said. 
+                        The GPWS alerts pilots if their aircraft is in immediate danger of flying 
+                        into the ground or an obstacle. 
+                        “Hence, in my observation, it looks 
+                        like the flying captain made a steep 
+                        climb in a bid to clear the terrain and
+                    </p>
+                    <p>
+                        A steep turn in aviation, performed 
+                        by an aircraft, is a turn that involves a 
+                        bank of more than 30 degrees. 
+                        “As per my observation, the flight 
+                        captain may have seen clouds on his 
+                        right. He then took a left turn, on the 
+                        same side where he was seated, to avoid 
+                        the clouds,” said a retired Twin Otter 
+                        captain who has flown in the PokharaJomsom route hundreds of times. 
+                        Aircrafts usually take a turn, left or 
+                        right, for several reasons; one is to 
+                        avoid obstacles like mountains or 
+                        clouds.
+                        “As soon as the aircraft made a 
+                        banking turn to change the direction, 
+                        in which the plane inclines, usually 
+                        towards the ground or an obstacle 
+                        which may be the hills, in this case, 
+                        ground proximity warning system 
+                        (GPWS) alarm may have rung,” the 
+                        captain said. 
+                        The GPWS alerts pilots if their aircraft is in immediate danger of flying 
+                        into the ground or an obstacle. 
+                        “Hence, in my observation, it looks 
+                        like the flying captain made a steep 
+                        climb in a bid to clear the terrain and
+                    </p>
+        
+                </div>
+            </div>   
+
+        </section>    
+
+
+    </body> 
+    <script>
+        //slider
+        var slides = document.querySelectorAll(".slider img");
+        var currentSlide = 0;
+        setInterval(function() {
+            // Move the current slide off the screen
+            slides[currentSlide].classList.remove("active");
+            // Set the next slide as the current slide
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add("active");
+        }, 2000);
+
+        //arabic only
+        document.getElementById("myBtn").addEventListener("click", submitForm);
+        function submitForm() {
+            event.preventDefault();
+            var arabic = document.getElementById("arabic-only").value;
+            var arabicReg = /^[\u0600-\u06FF\s]+$/;
+            if(arabic.length === 0){
+                document.getElementById("status").innerHTML = "Info: Please enter arabic texts";
+                setTimeout(function(){
+                    document.getElementById("status").innerHTML = "";
+                }, 1000
+                );
+            }
+            else if (arabicReg.test(arabic)) {
+                document.getElementById("arabic-only").style.border= "2px solid green";
+                document.getElementById("status").innerHTML = "Result: Accepted";
+                setTimeout(function(){
+                    document.getElementById("status").innerHTML = "";
+                }, 1000
+                );
+            } else {
+                document.getElementById("arabic-only").style.border= "2px solid red";
+                document.getElementById("status").innerHTML = "Result: Rejected";
+                setTimeout(function(){
+                    document.getElementById("status").innerHTML = "";
+                }, 1000
+                );
+                
+            } 
+        }
+    </script>    
+</html>    
