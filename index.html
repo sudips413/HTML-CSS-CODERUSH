@@ -7,6 +7,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Project</title>
         <style>
+            /* display none */
+            #failed,#accept,#info{
+                display:none;
+            }
+            #failed{
+                color: red;
+                font-size: 20px;
+            }
+            #accept{
+                color: green;
+                font-size: 20px;
+            }
+            #info{
+                color: blue;
+                font-size: 20px;
+            }
             /* CSS styles for the slider container */
             .slider {
                 width: 80%;
@@ -207,6 +223,7 @@
     <body>
         <section id="section1">
             <center>
+                <h2>Canvas to insert photos and keep sliding effects with CSS</h2>
             <div class="slider">
                 <img src="https://images.hdqwalls.com/download/rose-bud-petals-2560x1080.jpg" class="active">
                 <img src="https://images.hdqwalls.com/wallpapers/bthumb/counter-strike-digital-art-wallpaper.jpg">
@@ -217,7 +234,7 @@
         
         <!-- this is the arabic lanuage accept section -->
         <section id="section2">
-            <h2>ACCEPT ARABIC LANGUAGE</h2>
+            <h2>form to accept Arabic language in HTML and CSS</h2>
             <center>
             <form method="POST" class="form">
                 <textarea class="arabic-only" id="arabic-only" type="text" placeholder="Enter the Arabic Language here..." onchange="arabiconly()" required></textarea>
@@ -225,18 +242,19 @@
                     Info : Please enter arabic texts
                 </span>
                 <span id="failed">
-                    Rejected
+                    Submit Failed
                 </span>
                 <span id="accept">
-                    Accepted
+                    Submit Accepted
                 </span>
-                <button  class="btn" id="myBtn">Check</button>
+                <button  class="btn" id="myBtn">Submit</button>
             </form>
             </center>
         </section>
         <!-- this is the grid section -->
         <section id="section3">
             <h2>GRID LAYOUT</h2>
+            <h2> List when maximized and in grid when made small size</h2>
         <div class="grid">
             <div class="box row1">
                 <div class="card">                    
@@ -266,6 +284,7 @@
         </section>
     <!-- this section is about newspaper using grid -->
         <section id="section4">
+            <h2>News style with CSS two columns with headings</h2>
             <div class="newsTitle">
                 <h1>Missing Tara Air plane with 22 aboard found crashed in Nepal</h1>        
                 <h3>Wreckage of the Twin Otter that flew for Jomsom from Pokhara on Sunday morning was located near a mountain in Mustang on Monday morning.</h3>
@@ -386,7 +405,7 @@
                         into the ground or an obstacle. 
                         “Hence, in my observation, it looks 
                         like the flying captain made a steep 
-                        climb in a bid to clear the terrain and
+                        climb in a bid to clear the terrain.
                     </p>
         
                 </div>
@@ -415,24 +434,30 @@
             var arabic = document.getElementById("arabic-only").value;
             var arabicReg = /^[\u0600-\u06FF\s]+$/;
             if(arabic.length === 0){
-                document.getElementById("status").innerHTML = "Info: Please enter arabic texts";
+                document.getElementById("info").style.display="block";
+                document.getElementById("accept").style.display="none";
+                document.getElementById("failed").style.display="none";
                 setTimeout(function(){
-                    document.getElementById("status").innerHTML = "";
+                    document.getElementById("info").style.display="none";
                 }, 1000
                 );
             }
             else if (arabicReg.test(arabic)) {
                 document.getElementById("arabic-only").style.border= "2px solid green";
-                document.getElementById("status").innerHTML = "Result: Accepted";
+                document.getElementById("info").style.display="none";
+                document.getElementById("accept").style.display="block";
+                document.getElementById("failed").style.display="none";
                 setTimeout(function(){
-                    document.getElementById("status").innerHTML = "";
+                    document.getElementById("accept").style.display="none";
                 }, 1000
                 );
             } else {
                 document.getElementById("arabic-only").style.border= "2px solid red";
-                document.getElementById("status").innerHTML = "Result: Rejected";
+                document.getElementById("info").style.display="none";
+                document.getElementById("accept").style.display="none";
+                document.getElementById("failed").style.display="block";
                 setTimeout(function(){
-                    document.getElementById("status").innerHTML = "";
+                    document.getElementById("failed").style.display="none";
                 }, 1000
                 );
                 
