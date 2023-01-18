@@ -269,7 +269,7 @@
                 // CREATE AN OBJECT OF Image.
                 let img = new Image();
                 var i =0;
-                setInterval(function(){
+                function image(){
                     let canvas = document.getElementById('myCanvas');
                     let ctx = canvas.getContext('2d');
                     if(i==images.length){
@@ -283,7 +283,8 @@
                     if(i >= images.length){
                         i = 0;
                     }
-                },3000);
+                };
+                setInterval(image, 3000);
             }
         </script>
         
