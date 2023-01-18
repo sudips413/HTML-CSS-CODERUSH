@@ -258,8 +258,7 @@
         <script>
             window.onload = function () {
                 // GET THE IMAGE.
-                let canvas = document.getElementById('myCanvas');
-                let ctx = canvas.getContext('2d');
+                
                 var images = [
                     "https://fjolt.com/images/misc/202203281.png",
                     "https://images.hdqwalls.com/wallpapers/bthumb/abstract-shapes-4k-q2.jpg",
@@ -270,18 +269,19 @@
                 // CREATE AN OBJECT OF Image.
                 let img = new Image();
                 var i =0;
-                img.src = images[i];
-                img.onload = function () {
-                    ctx.drawImage(img, 500, 0,250,300);
-                }
                 setInterval(function(){
-                    i++;
+                    let canvas = document.getElementById('myCanvas');
+                    let ctx = canvas.getContext('2d');
                     if(i==images.length){
                         i=0;
                     }
                     img.src = images[i];
                     img.onload = function () {
                         ctx.drawImage(img, 500, 0,250,300);
+                    }
+                    i++;
+                    if(i >= images.length){
+                        i = 0;
                     }
                 },3000);
             }
@@ -494,7 +494,7 @@
                 document.getElementById("failed").style.display="none";
                 setTimeout(function(){
                     document.getElementById("info").style.display="none";
-                }, 1000
+                }, 5000
                 );
             }
             else if (arabicReg.test(arabic)) {
@@ -504,7 +504,7 @@
                 document.getElementById("failed").style.display="none";
                 setTimeout(function(){
                     document.getElementById("accept").style.display="none";
-                }, 1000
+                }, 5000
                 );
             } else {
                 document.getElementById("arabic-only").style.border= "2px solid red";
@@ -513,7 +513,7 @@
                 document.getElementById("failed").style.display="block";
                 setTimeout(function(){
                     document.getElementById("failed").style.display="none";
-                }, 1000
+                }, 5000
                 );
                 
             } 
