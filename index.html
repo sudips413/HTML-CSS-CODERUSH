@@ -3,10 +3,29 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Project</title>
         <style>
+            canvas{
+                width: 100%;
+                height: 200px;
+                margin: 20px auto;
+            }
+            .canvasSlider{
+                animation: slide 3s infinite;
+            }
+
+
+            @keyframes slide {
+                from {
+                    transform: translateX(0);
+                }
+                to {
+                    transform: translateX(-50%);
+                }
+            }
             /* display none */
             #failed,#accept,#info{
                 display:none;
@@ -114,8 +133,9 @@
             #section4{
                 margin-top: 20px;
                 margin-bottom: 20px;
-                background-color: #e8e8e8;
+                background-image: linear-gradient(90deg, #2f2f30 0%, #282a29 100%);
                 padding: 20px;
+                color: #ced0dc
 
             }
             img{
@@ -229,23 +249,58 @@
                 <img src="https://images.hdqwalls.com/wallpapers/bthumb/counter-strike-digital-art-wallpaper.jpg">
                 <img src="https://images.hdqwalls.com/wallpapers/bthumb/abstract-shapes-4k-q2.jpg">
             </div>
+            
             </center>
+            <div id="canvas">
+                <canvas id="myCanvas" class="canvasSlider" width="800" height="300"></canvas>
+            </div>
         </section>
+        <script>
+            window.onload = function () {
+                // GET THE IMAGE.
+                let canvas = document.getElementById('myCanvas');
+                let ctx = canvas.getContext('2d');
+                var images = [
+                    "https://fjolt.com/images/misc/202203281.png",
+                    "https://images.hdqwalls.com/wallpapers/bthumb/abstract-shapes-4k-q2.jpg",
+                    "https://cdn.pixabay.com/photo/2012/05/29/00/43/car-49278__340.jpg"
+                    
+                ];
+
+                // CREATE AN OBJECT OF Image.
+                let img = new Image();
+                var i =0;
+                img.src = images[i];
+                img.onload = function () {
+                    ctx.drawImage(img, 500, 0,250,300);
+                }
+                setInterval(function(){
+                    i++;
+                    if(i==images.length){
+                        i=0;
+                    }
+                    img.src = images[i];
+                    img.onload = function () {
+                        ctx.drawImage(img, 500, 0,250,300);
+                    }
+                },3000);
+            }
+        </script>
         
         <!-- this is the arabic lanuage accept section -->
         <section id="section2">
-            <h2>form to accept Arabic language in HTML and CSS</h2>
+            <h2>Form to accept Arabic language in HTML and CSS</h2>
             <center>
             <form method="POST" class="form">
                 <textarea class="arabic-only" id="arabic-only" type="text" placeholder="Enter the Arabic Language here..." onchange="arabiconly()" required></textarea>
                 <span id="info">
-                    Info : Please enter arabic texts
+                    <i class="fa fa-info"></i> Please enter arabic texts
                 </span>
                 <span id="failed">
-                    Submit Failed
+                    <i class="fa fa-warning"></i> Submit Failed
                 </span>
                 <span id="accept">
-                    Submit Accepted
+                    <i class="fa fa-check"></i>Submit Accepted
                 </span>
                 <button  class="btn" id="myBtn">Submit</button>
             </form>
@@ -314,7 +369,7 @@
                         found at Sano Sware Bhir in Thasang 
                         of Mustang, according to the Civil 
                         Aviation Authority of Nepal, the 
-                        country’s aviation regulator
+                        country’s aviation regulator.
                     </p>
                     <p>
                         ountry’s aviation regulator. 
@@ -346,7 +401,7 @@
                         position of the crashed aircraft shows 
                         the pilot wanted to avoid the cloud and 
                         during the course, the plane made a 
-                        steep turn with an excessive bank
+                        steep turn with an excessive bank.
                     </p>
         
                 </div>
@@ -377,7 +432,7 @@
                         into the ground or an obstacle. 
                         “Hence, in my observation, it looks 
                         like the flying captain made a steep 
-                        climb in a bid to clear the terrain and
+                        climb in a bid to clear the terrain.
                     </p>
                     <p>
                         A steep turn in aviation, performed 
@@ -425,7 +480,7 @@
             // Set the next slide as the current slide
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add("active");
-        }, 2000);
+        }, 5000);
 
         //arabic only
         document.getElementById("myBtn").addEventListener("click", submitForm);
